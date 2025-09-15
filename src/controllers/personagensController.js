@@ -88,7 +88,7 @@ const createToyStory = (req, res) => {
     });
   }
 
-  // Criar nova barbie
+  // Criar novo personagem
   const novaToy = {
     id: toyStory.length + 1,
     nome,
@@ -98,7 +98,7 @@ const createToyStory = (req, res) => {
     quantidadeEstoque
   };
 
-  // Adicionar à lista de bruxos
+  // Adicionar à lista de personagens
   toyStory.push(novaToy);
 
   res.status(201).json({

@@ -3,7 +3,7 @@ import { getAllToyStory, getToyStoryById, createToyStory, deleteToyStory, putToy
 
 const router = express.Router();
 
-// Rotas para heróis
+// Rotas para personagens
 router.get("/personagens", getAllToyStory);
 router.get("/personagens/maisEstoque", getToyStoryByEstoque);
 router.get("/personagens/:id", getToyStoryById);
