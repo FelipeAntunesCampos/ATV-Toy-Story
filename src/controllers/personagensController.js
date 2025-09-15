@@ -1,7 +1,7 @@
 import dados from "./../models/dados.js";
 const { toyStory } = dados;
 
-// GET /bruxos - Listar todos os bruxos com filtros
+
 const getAllToyStory = (req, res) => {
   const { nome, tipo, anoFabricacao, cor, quantidadeEstoque } = req.query;
   let resultado = toyStory;
@@ -62,10 +62,22 @@ const getToyStoryById = (req, res) => {
   }
 };
 
+const getToyStoryByEstoque = (req, res) => {
+  const maxEstoque = Math.max(...toyStory.map(p => p.quantidadeEstoque));
+
+  const personagensComMaisEstoque = toyStory.filter(p => p.quantidadeEstoque === maxEstoque);
+
+  res.status(200).json({
+    message: "Personagens com maior quantidade de estoque retornados com sucesso ",
+    personagens: personagensComMaisEstoque,
+  });
+};
+
+
 const createToyStory = (req, res) => {
   // Acessando dados do body
   //mudar o nodemon para node no package
-  const { nnome, tipo, anoFabricacao, cor, quantidadeEstoque } = req.body;
+  const { nome, tipo, anoFabricacao, cor, quantidadeEstoque } = req.body;
   console.log("Dados recebidos:", req.body);
 
   // Validação básica
@@ -166,4 +178,4 @@ const putToy = (req, res) => {
   
 }
 
-export { getAllToyStory, getToyStoryById, createToyStory, deleteToyStory, putToy };
+export { getAllToyStory, getToyStoryById, createToyStory, deleteToyStory, putToy, getToyStoryByEstoque };

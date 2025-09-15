@@ -16,7 +16,7 @@ app.get("/", (req, res) => {
 });
 
 //rotas implementadas
-app.use("/toyStory", personagensRoutes);
+app.use("/", personagensRoutes);
 
 // Iniciar servidor escutando na porta definida
 app.listen(serverPort, () => {
